@@ -100,6 +100,7 @@ function minWindowTwoPointer(str1, str2){
                 bestWindow = [...currentWindow];
                 bestWindowLength = currentWindow.length;
             }
+
             i = leftmost;
             leftmost = undefined;
             rightmost = 0;
@@ -122,6 +123,33 @@ function minWindowTwoPointer(str1, str2){
 /*for (let entry of minWindowInputs){
     cc(minWindowTwoPointer(entry[0], entry[1]));
 }*/
+
+//--------------------------------------------------//
+
+function findRepeatedSequences(s, k) {
+    let position = 0;
+    let map = {}
+    let sAsArray = s.split("");
+    let results = [];
+
+    while (position < s.length - k){
+        let currentWindow = sAsArray.slice(position, position+k).join("");
+        map[currentWindow] ? map[currentWindow]++ : map[currentWindow] = 1;
+        position++;
+    }
+
+    for (let entry in map){
+        if (map[entry] === 1){
+            delete map[entry];
+        } else {
+            results.push(entry);
+        }
+    }
+
+    return results;
+}
+
+cc(findRepeatedSequences("AAAAACCCCCAAAAACCCCCC" , 8));
 
 //--------------------------------------------------//
 

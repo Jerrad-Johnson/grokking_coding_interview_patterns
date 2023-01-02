@@ -149,7 +149,53 @@ function findRepeatedSequences(s, k) {
     return results;
 }
 
-cc(findRepeatedSequences("AAAAACCCCCAAAAACCCCCC" , 8));
+/*cc(findRepeatedSequences("AAAAACCCCCAAAAACCCCCC" , 8));*/
 
 //--------------------------------------------------//
 
+function minWindowV2(s, t) {
+    let map = {};
+    let leftmost = undefined;
+    let catches = 0;
+    let currentWindow = [];
+    let bestWindow = [];
+    let bestWindowLength = Number.POSITIVE_INFINITY;
+
+    for (let entry of t){
+        map[entry] ? map[entry]++ : map[entry] = 1;
+    }
+    let tempMap = {...map};
+
+    for (let i = 0; i < s.length+1; i++){
+        if (catches === t.length){
+            i = leftmost;
+            leftmost = undefined;
+            catches = 0;
+            tempMap = {...map};
+
+            if (currentWindow.length < bestWindowLength){
+                bestWindow = [...currentWindow];
+                bestWindowLength = currentWindow.length;
+            }
+
+            currentWindow = [];
+            continue;
+        }
+
+        if (s[i] in tempMap){
+            if (leftmost === undefined) leftmost = i;
+
+            currentWindow.push(s[i]);
+            tempMap[s[i]]--;
+            catches++;
+
+            if (tempMap[s[i]] === 0) delete tempMap[s[i]];
+        } else if (leftmost !== undefined){
+            currentWindow.push(s[i]);
+        }
+    }
+
+    return bestWindow.join("");
+}
+
+cc(minWindowV2("ABXYZJKLSNFC" , "ABC"));

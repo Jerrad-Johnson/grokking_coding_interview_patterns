@@ -80,6 +80,10 @@ function minWindow(str1, str2){
 //--------------------------------------------------//
 // The Grokking preferred version is shorter than mine, but its loops are nested two levels deeper.
 // I believe that mine is better because it's easier to understand.
+// Also, the grokking version does not appear to solve the challenge.
+// For example, their version (going by the diagrams) will fail this challenge: "saaaaaaaaasazaaaaaaaasz", "sz"
+// Once it finds the first z, theirs will reverse the loop, and find the second-shortest substring of "saz."
+// But it will never move forward to the end, to find "sz."
 //--------------------------------------------------//
 
 function minWindowTwoPointer(str1, str2){

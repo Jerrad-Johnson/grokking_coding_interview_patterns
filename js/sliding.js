@@ -155,6 +155,7 @@ function findRepeatedSequences(s, k) {
 
 /*cc(findRepeatedSequences("AAAAACCCCCAAAAACCCCCC" , 8));*/
 
+
 //--------------------------------------------------//
 
 function minWindowV2(s, t) {
@@ -202,4 +203,46 @@ function minWindowV2(s, t) {
     return bestWindow.join("");
 }
 
-cc(minWindowV2("ABXYZJKLSNFC" , "ABC"));
+/*cc(minWindowV2("ABXYZJKLSNFC" , "ABC"));*/
+
+//--------------------------------------------------//
+// I struggled a lot with this one, my increments / etc. were wrong and I couldn't figure it out.
+// I (mostly) copied Educative's version, took a break, and now it makes sense.
+//--------------------------------------------------//
+
+
+function findLongestSubstring(inputString) {
+    if (inputString.length === 0) return 0;
+
+    let map = {};
+
+    let longest = Number.NEGATIVE_INFINITY;
+    let leftPointer = 0;
+    let currLength = 0;
+
+    let i = 0;
+    for (; i < inputString.length; i++){
+        let currentLetter = inputString[i];
+
+        if (map[currentLetter] === undefined){
+            map[currentLetter] = i;
+        } else {
+            if (map[currentLetter] >= leftPointer){
+                currLength = i - leftPointer;
+                if (currLength > longest) longest = currLength;
+                leftPointer = map[currentLetter]+1;
+            }
+
+            map[currentLetter] = i;
+        }
+    }
+
+    if (longest < i - leftPointer) longest = i - leftPointer;
+    return longest;
+}
+
+cc(findLongestSubstring("aaaabaaa"), "Must be 2");
+cc(findLongestSubstring("abcdbea"), "Must be 5");
+cc(findLongestSubstring("aba"), "Must be 2");
+
+//--------------------------------------------------//

@@ -286,6 +286,7 @@ function minSubArraylen(target, nums){
                 if (runningCount < best) best = runningCount;
                 runningTotal = 0;
                 runningCount = 0;
+                break; // untested, but this should work and increase efficiency.
             }
         }
         runningTotal = 0;

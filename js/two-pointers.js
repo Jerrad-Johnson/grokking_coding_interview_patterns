@@ -41,22 +41,27 @@ function findSumOfThree(nums, target) {
 // More efficient, but I want to improve it further.
 //--------------------------------------------------//
 
-function findSumOfThreeImproved(nums, target) {
+function findSumOfThreeImprovedV2(nums, target) {
     if (nums.length < 3) return false;
-    let numsSorted = nums.sort();
+    let numsSorted = nums.sort((a, b) => a - b);
 
     for (let i = 0; i < numsSorted.length-2; i++){
-        let j = i+1;
-        let remaining = numsSorted.slice(j+1);
-        let result = remaining.find((num) => num === (target - numsSorted[i] - numsSorted[j]));
-        if (result) return true;
+        let low = i+1;
+        let high = numsSorted.length-1;
+        while (low < high){
+            if (numsSorted[i] + numsSorted[low] + numsSorted[high] === target) return true;
+            if (numsSorted[i] + numsSorted[low] + numsSorted[high] > target){
+                high--;
+            } else {
+                low++;
+            }
+        }
     }
 
     return false;
 }
 
-/*
-cc(findSumOfThreeImproved([-1,2,1,-4,5,-3] , -8));*/
+/*cc(findSumOfThreeImprovedV2([-1,2,1,-4,5,-3] , -8));*/
 
 
 //--------------------------------------------------//

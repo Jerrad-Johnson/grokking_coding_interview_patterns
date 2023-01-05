@@ -4,9 +4,26 @@ import {cc} from "../common/variables";
 export function fastAndSlowPointers(){
     //isHappyNumber(7);
 
-    let linkedList = new LinkedList();
-    linkedList.createLinkedList([2, 2, 4, 5, 6, 3, 2, 4]);
-    cc(detectCycle(linkedList.head));
+    let cycleInput = [
+        [2, 2, 4, 5, 6, 3, 2, 4],
+    ];
+
+    // This is basically a copy-paste from Educative, for running test(s).
+    for (var i = 0; i < cycleInput.length; i++) {
+        let inputLinkedList = new LinkedList()
+        inputLinkedList.createLinkedList(cycleInput[i])
+        if (i % 2 === 0) {
+            inputLinkedList.head.next.next.next.next.next.next =
+                inputLinkedList.head.next
+        }
+        //cc(detectCycle(inputLinkedList.head));
+    }
+
+    let inputMiddleNode = [1,2,3,4,5];
+    let middleNodeSet = new LinkedList();
+    middleNodeSet.createLinkedList(inputMiddleNode);
+    cc(getMiddleNode(middleNodeSet.head));
+
 }
 
 //--------------------------------------------------//
@@ -36,13 +53,11 @@ function isHappyNumber(n){
 
 
 //--------------------------------------------------//
-// This worked (passed) on educative, but did not work locally; the outputs don't match.
-// It may be related to converting from import to <script>, but that seems wrong.
-//--------------------------------------------------//
 
 function detectCycle(head) {
     let slow = head;
     let fast = head.next;
+
 
     while (fast.data !== null && fast.next?.data !== null){
         slow = slow.next;
@@ -55,4 +70,26 @@ function detectCycle(head) {
 }
 
 
+//--------------------------------------------------//
 
+function getMiddleNode(head){
+    if (!head.next) return head.data;
+    let slow = head;
+    let fast = head;
+    let distance = 0;
+
+    while (fast.data !== null && fast.next?.data !== null){
+        if (!fast.next){
+            distance = 0;
+            return slow.data;
+        }
+
+        if (!fast.next?.next){
+            distance = 1;
+            return slow.next.data;
+        }
+
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+}

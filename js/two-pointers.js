@@ -121,5 +121,5 @@ function isPalindrome2(s) {
     return misses < 2;
 }
 
-cc(isPalindrome2("RACECARR"))
+/*cc(isPalindrome2("RACECARR"));*/
 

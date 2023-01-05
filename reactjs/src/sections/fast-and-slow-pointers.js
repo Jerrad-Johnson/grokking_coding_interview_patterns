@@ -76,16 +76,13 @@ function getMiddleNode(head){
     if (!head.next) return head.data;
     let slow = head;
     let fast = head;
-    let distance = 0;
 
     while (fast.data !== null && fast.next?.data !== null){
         if (!fast.next){
-            distance = 0;
             return slow.data;
         }
 
         if (!fast.next?.next){
-            distance = 1;
             return slow.next.data;
         }
 

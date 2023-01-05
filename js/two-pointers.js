@@ -1,12 +1,11 @@
 //--------------------------------------------------//
 
 function isPalindrome(s) {
-    let asArr = s.split("");
-
     let l = 0;
     let r = s.length-1;
+
     while (l <= r){
-        if (asArr[l] !== asArr[r]) return false;
+        if (s[l] !== s[r]) return false;
         l++;
         r--;
     }
@@ -14,7 +13,50 @@ function isPalindrome(s) {
     return true;
 }
 
-cc(isPalindrome("RACECAR"));
+/*cc(isPalindrome("RACECAR"));*/
+
+
+//--------------------------------------------------//
+// Inefficient, but works. First attempt.
+//--------------------------------------------------//
+
+function findSumOfThree(nums, target) {
+    if (nums.length < 3) return false;
+    let numsSorted = nums.sort();
+
+    for (let i = 0; i < numsSorted.length-2; i++){
+        for (let j = i+1; j < numsSorted.length-1; j++){
+            let remaining = numsSorted.slice(j+1);
+            let result = remaining.find((num) => num === (target - numsSorted[i] - numsSorted[j]));
+            if (result) return true;
+        }
+    }
+    return false;
+}
+
+/*cc(findSumOfThree([-1,2,1,-4,5,-3] , -8));*/
+
+
+//--------------------------------------------------//
+// More efficient, but I want to improve it further.
+//--------------------------------------------------//
+
+function findSumOfThreeImproved(nums, target) {
+    if (nums.length < 3) return false;
+    let numsSorted = nums.sort();
+
+    for (let i = 0; i < numsSorted.length-2; i++){
+        let j = i+1;
+        let remaining = numsSorted.slice(j+1);
+        let result = remaining.find((num) => num === (target - numsSorted[i] - numsSorted[j]));
+        if (result) return true;
+    }
+
+    return false;
+}
+
+/*
+cc(findSumOfThreeImproved([-1,2,1,-4,5,-3] , -8));*/
 
 
 //--------------------------------------------------//

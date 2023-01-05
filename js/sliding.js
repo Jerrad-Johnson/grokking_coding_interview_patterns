@@ -1,14 +1,3 @@
-//--------------------------------------------------//
-
-let findMaxInputs = [
-    [[1,2,3,4,5,6,7,8,9,10], 3],
-    [[3,3,3,3,3,3,3,3,3,3], 4],
-    [[10,6,9,-3,23,-1,34,56,67,-1,-4,-8,-2,9,10,34,67], 2],
-    [[4,5,6,1,2,3], 1],
-    [[9,5,3,1,6,3], 2],
-    [[1,2], 2],
-];
-
 function findMaxSlidingWindow(nums, w) {
     let results = [];
     let window = [];
@@ -33,19 +22,20 @@ function findMaxSlidingWindow(nums, w) {
     cc(findMaxSlidingWindow(set[0], set[1]));
 }*/
 
+let findMaxInputs = [
+    [[1,2,3,4,5,6,7,8,9,10], 3],
+    [[3,3,3,3,3,3,3,3,3,3], 4],
+    [[10,6,9,-3,23,-1,34,56,67,-1,-4,-8,-2,9,10,34,67], 2],
+    [[4,5,6,1,2,3], 1],
+    [[9,5,3,1,6,3], 2],
+    [[1,2], 2],
+];
+
 
 //--------------------------------------------------//
 // This does not need the requirements: It will not necessarily find the shorted substring.
 // It passed Grokking's sample tests, but should not have. The next one (minWindowTwoPointer) rightly passes.
 //--------------------------------------------------//
-
-let minWindowInputs = [
-    ["abcdebdde", "bde"],
-    ["fgrqsqsnodwmxzkzxwqegkndaa", "kzed"],
-    ["michmznaitnjdnjkdsnmichmznait", "michmznait"],
-    ["afgegrwgwga", "aa"],
-    ["abababa", "ba"],
-];
 
 function minWindow(str1, str2){
     let workingWindow = [];
@@ -77,6 +67,14 @@ function minWindow(str1, str2){
 /*for (let entry of minWindowInputs){
     cc(minWindow(entry[0], entry[1]));
 }*/
+
+let minWindowInputs = [
+    ["abcdebdde", "bde"],
+    ["fgrqsqsnodwmxzkzxwqegkndaa", "kzed"],
+    ["michmznaitnjdnjkdsnmichmznait", "michmznait"],
+    ["afgegrwgwga", "aa"],
+    ["abababa", "ba"],
+];
 
 
 //--------------------------------------------------//
@@ -129,6 +127,7 @@ function minWindowTwoPointer(str1, str2){
 /*for (let entry of minWindowInputs){
     cc(minWindowTwoPointer(entry[0], entry[1]));
 }*/
+
 
 //--------------------------------------------------//
 

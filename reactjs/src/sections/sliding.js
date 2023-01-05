@@ -1,4 +1,4 @@
-function findMaxSlidingWindow(nums, w) {
+export function findMaxSlidingWindow(nums, w) {
     let results = [];
     let window = [];
     let pointer = 0;
@@ -18,11 +18,7 @@ function findMaxSlidingWindow(nums, w) {
     return results;
 }
 
-/*for (let set of findMaxInputs){
-    cc(findMaxSlidingWindow(set[0], set[1]));
-}*/
-
-let findMaxInputs = [
+export let findMaxInputs = [
     [[1,2,3,4,5,6,7,8,9,10], 3],
     [[3,3,3,3,3,3,3,3,3,3], 4],
     [[10,6,9,-3,23,-1,34,56,67,-1,-4,-8,-2,9,10,34,67], 2],
@@ -37,7 +33,7 @@ let findMaxInputs = [
 // It passed Grokking's sample tests, but should not have. The next one (minWindowTwoPointer) rightly passes.
 //--------------------------------------------------//
 
-function minWindow(str1, str2){
+export function minWindow(str1, str2){
     let workingWindow = [];
     let result = [];
     let entryCount = str2.length;
@@ -64,11 +60,7 @@ function minWindow(str1, str2){
     return (goalAchieved ? "" : result.join(""));
 }
 
-/*for (let entry of minWindowInputs){
-    cc(minWindow(entry[0], entry[1]));
-}*/
-
-let minWindowInputs = [
+export let minWindowInputs = [
     ["abcdebdde", "bde"],
     ["fgrqsqsnodwmxzkzxwqegkndaa", "kzed"],
     ["michmznaitnjdnjkdsnmichmznait", "michmznait"],
@@ -86,7 +78,7 @@ let minWindowInputs = [
 // But it will never move forward to the end, to find "sz."
 //--------------------------------------------------//
 
-function minWindowTwoPointer(str1, str2){
+export function minWindowTwoPointer(str1, str2){
     let leftmost,
         rightmost = 0,
         finds = 0,
@@ -124,14 +116,10 @@ function minWindowTwoPointer(str1, str2){
     return bestWindow.join("");
 }
 
-/*for (let entry of minWindowInputs){
-    cc(minWindowTwoPointer(entry[0], entry[1]));
-}*/
-
 
 //--------------------------------------------------//
 
-function findRepeatedSequences(s, k) {
+export function findRepeatedSequences(s, k) {
     let position = 0;
     let map = {}
     let sAsArray = s.split("");
@@ -154,12 +142,10 @@ function findRepeatedSequences(s, k) {
     return results;
 }
 
-/*cc(findRepeatedSequences("AAAAACCCCCAAAAACCCCCC" , 8));*/
-
 
 //--------------------------------------------------//
 
-function minWindowV2(s, t) {
+export function minWindowV2(s, t) {
     let map = {};
     let leftmost = undefined;
     let catches = 0;
@@ -204,15 +190,13 @@ function minWindowV2(s, t) {
     return bestWindow.join("");
 }
 
-/*cc(minWindowV2("ABXYZJKLSNFC" , "ABC"));*/
-
 
 //--------------------------------------------------//
 // I struggled a lot with this one, my increments / etc. were wrong and I couldn't figure it out.
 // I (mostly) copied Educative's version, took a break, and now it makes sense. Emphasis perhaps on taking a break.
 //--------------------------------------------------//
 
-function findLongestSubstring(inputString) {
+export function findLongestSubstring(inputString) {
     if (inputString.length === 0) return 0;
 
     let map = {};
@@ -251,7 +235,7 @@ cc(findLongestSubstring("aba"), "Must be 2");*/
 // Misunderstood the requirements. This does not solve the problem.
 //--------------------------------------------------//
 
-function minSubArraylenSorted(target, nums) {
+export function minSubArraylenSorted(target, nums) {
     let runningTotal = 0;
     let numEntries = 0;
     nums.sort().reverse();
@@ -271,7 +255,7 @@ function minSubArraylenSorted(target, nums) {
 
 //--------------------------------------------------//
 
-function minSubArraylen(target, nums){
+export function minSubArraylen(target, nums){
     let best = Number.POSITIVE_INFINITY;
     let runningTotal = 0;
     let runningCount = 0;

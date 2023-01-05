@@ -1,6 +1,4 @@
-
-
-function isHappyNumber(n){
+export function isHappyNumber(n){
     let slowNumbers = n;
     let fastNumbers = n;
 
@@ -23,15 +21,13 @@ function isHappyNumber(n){
     }
 }
 
-/*cc(isHappyNumber(7));*/
-
 
 //--------------------------------------------------//
 // This worked (passed) on educative, but did not work locally; the outputs don't match.
 // It may be related to converting from import to <script>, but that seems wrong.
 //--------------------------------------------------//
 
-function detectCycle(head) {
+export function detectCycle(head) {
     let slow = head;
     let fast = head.next;
 
@@ -46,6 +42,4 @@ function detectCycle(head) {
 }
 
 
-let linkedList = new LinkedList();
-linkedList.createLinkedList([2, 2, 4, 5, 6, 3, 2, 4]);
-cc(detectCycle(linkedList.head));
+

@@ -1,1 +1,2 @@
-utils/linked_list.js
+js/utils/linked_list.js
+js/utils/linked_list_node.js

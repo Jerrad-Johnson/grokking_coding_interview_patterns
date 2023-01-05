@@ -106,11 +106,10 @@ function reverseWords(sentence) {
 function isPalindrome2(s) {
     let misses = 0;
     let right = s.length-1;
-    let sAsArr = [...s];
 
     for (let left = 0; left <= right; left++){
         if (misses > 1) return false;
-        if (sAsArr[left] === sAsArr[right]){
+        if (s[left] === s[right]){
             right--;
         } else {
             misses++;

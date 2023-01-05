@@ -1,4 +1,34 @@
-export function findMaxSlidingWindow(nums, w) {
+import {cc} from "../common/variables";
+
+export function slidingWindows(){
+    /*for (let set of findMaxInputs){
+        cc(findMaxSlidingWindow(set[0], set[1]));
+    }*/
+
+    /*for (let entry of minWindowInputs){
+        cc(minWindow(entry[0], entry[1]));
+    }*/
+
+    /*for (let entry of minWindowInputs){
+        cc(minWindowTwoPointer(entry[0], entry[1]));
+    }*/
+
+    //cc(findRepeatedSequences("AAAAACCCCCAAAAACCCCCC" , 8));
+
+    //cc(minWindowV2("ABXYZJKLSNFC" , "ABC"));
+
+    //cc(findLongestSubstring("aaaabaaa"), "Must be 2");
+    //cc(findLongestSubstring("abcdbea"), "Must be 5");
+    //cc(findLongestSubstring("aba"), "Must be 2");
+
+    //cc(minSubArraylenSorted(5 , [1, 2, 1, 3]));
+
+    //cc(minSubArraylen(7 , [2, 3, 1, 2, 4, 3]));
+}
+
+//--------------------------------------------------//
+
+function findMaxSlidingWindow(nums, w) {
     let results = [];
     let window = [];
     let pointer = 0;
@@ -33,7 +63,7 @@ export let findMaxInputs = [
 // It passed Grokking's sample tests, but should not have. The next one (minWindowTwoPointer) rightly passes.
 //--------------------------------------------------//
 
-export function minWindow(str1, str2){
+function minWindow(str1, str2){
     let workingWindow = [];
     let result = [];
     let entryCount = str2.length;
@@ -60,7 +90,7 @@ export function minWindow(str1, str2){
     return (goalAchieved ? "" : result.join(""));
 }
 
-export let minWindowInputs = [
+let minWindowInputs = [
     ["abcdebdde", "bde"],
     ["fgrqsqsnodwmxzkzxwqegkndaa", "kzed"],
     ["michmznaitnjdnjkdsnmichmznait", "michmznait"],
@@ -78,7 +108,7 @@ export let minWindowInputs = [
 // But it will never move forward to the end, to find "sz."
 //--------------------------------------------------//
 
-export function minWindowTwoPointer(str1, str2){
+function minWindowTwoPointer(str1, str2){
     let leftmost,
         rightmost = 0,
         finds = 0,
@@ -119,7 +149,7 @@ export function minWindowTwoPointer(str1, str2){
 
 //--------------------------------------------------//
 
-export function findRepeatedSequences(s, k) {
+function findRepeatedSequences(s, k) {
     let position = 0;
     let map = {}
     let sAsArray = s.split("");
@@ -145,7 +175,7 @@ export function findRepeatedSequences(s, k) {
 
 //--------------------------------------------------//
 
-export function minWindowV2(s, t) {
+function minWindowV2(s, t) {
     let map = {};
     let leftmost = undefined;
     let catches = 0;
@@ -196,7 +226,7 @@ export function minWindowV2(s, t) {
 // I (mostly) copied Educative's version, took a break, and now it makes sense. Emphasis perhaps on taking a break.
 //--------------------------------------------------//
 
-export function findLongestSubstring(inputString) {
+function findLongestSubstring(inputString) {
     if (inputString.length === 0) return 0;
 
     let map = {};
@@ -226,16 +256,12 @@ export function findLongestSubstring(inputString) {
     return longest;
 }
 
-/*cc(findLongestSubstring("aaaabaaa"), "Must be 2");
-cc(findLongestSubstring("abcdbea"), "Must be 5");
-cc(findLongestSubstring("aba"), "Must be 2");*/
-
 
 //--------------------------------------------------//
 // Misunderstood the requirements. This does not solve the problem.
 //--------------------------------------------------//
 
-export function minSubArraylenSorted(target, nums) {
+function minSubArraylenSorted(target, nums) {
     let runningTotal = 0;
     let numEntries = 0;
     nums.sort().reverse();
@@ -250,12 +276,10 @@ export function minSubArraylenSorted(target, nums) {
     return 0;
 }
 
-//cc(minSubArraylenSorted(5 , [1, 2, 1, 3]));
-
 
 //--------------------------------------------------//
 
-export function minSubArraylen(target, nums){
+function minSubArraylen(target, nums){
     let best = Number.POSITIVE_INFINITY;
     let runningTotal = 0;
     let runningCount = 0;
@@ -279,8 +303,6 @@ export function minSubArraylen(target, nums){
     if (best !== Number.POSITIVE_INFINITY) return best;
     return 0;
 }
-
-/*cc(minSubArraylen(7 , [2, 3, 1, 2, 4, 3]));*/
 
 //--------------------------------------------------//
 // The next (and last for this section) challenge is 'Best Time to Buy and Sell Stock.' However, I've done this a couple of times before. I am skipping it now.

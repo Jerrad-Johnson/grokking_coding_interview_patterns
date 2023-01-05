@@ -1,4 +1,17 @@
-export function isHappyNumber(n){
+import LinkedList from "../utils/linked-list/linked_list";
+import {cc} from "../common/variables";
+
+export function fastAndSlowPointers(){
+    //isHappyNumber(7);
+
+    let linkedList = new LinkedList();
+    linkedList.createLinkedList([2, 2, 4, 5, 6, 3, 2, 4]);
+    cc(detectCycle(linkedList.head));
+}
+
+//--------------------------------------------------//
+
+function isHappyNumber(n){
     let slowNumbers = n;
     let fastNumbers = n;
 
@@ -27,7 +40,7 @@ export function isHappyNumber(n){
 // It may be related to converting from import to <script>, but that seems wrong.
 //--------------------------------------------------//
 
-export function detectCycle(head) {
+function detectCycle(head) {
     let slow = head;
     let fast = head.next;
 

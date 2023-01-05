@@ -1,3 +1,21 @@
+import {cc} from "../common/variables";
+
+export function twoPointers(){
+    //cc(isPalindrome("RACECAR"));
+
+    //cc(findSumOfThree([-1,2,1,-4,5,-3] , -8));
+
+    //cc(findSumOfThreeImproved([-1,2,1,-4,5,-3] , -8));
+
+    //cc(findSumOfThreeImprovedV2([-1,2,1,-4,5,-3] , -8));
+
+    //cc(reverseWords("Hello     World"));
+
+    //cc(isPalindrome2("RACECARR"));
+}
+
+//--------------------------------------------------//
+
 function isPalindrome(s) {
     let l = 0;
     let r = s.length-1;
@@ -10,8 +28,6 @@ function isPalindrome(s) {
 
     return true;
 }
-
-/*cc(isPalindrome("RACECAR"));*/
 
 
 //--------------------------------------------------//
@@ -32,8 +48,6 @@ function findSumOfThree(nums, target) {
     return false;
 }
 
-/*cc(findSumOfThree([-1,2,1,-4,5,-3] , -8));*/
-
 
 //--------------------------------------------------//
 // More efficient, but I want to improve it further.
@@ -52,8 +66,6 @@ function findSumOfThreeImproved(nums, target) {
 
     return false;
 }
-
-/*cc(findSumOfThreeImproved([-1,2,1,-4,5,-3] , -8));*/
 
 
 //--------------------------------------------------//
@@ -78,8 +90,6 @@ function findSumOfThreeImprovedV2(nums, target) {
     return false;
 }
 
-/*cc(findSumOfThreeImprovedV2([-1,2,1,-4,5,-3] , -8));*/
-
 
 //--------------------------------------------------//
 
@@ -95,8 +105,6 @@ function reverseWords(sentence) {
 
     return sentenceAsArr.join(" ");
 }
-
-/*cc(reverseWords("Hello     World"));*/
 
 
 //--------------------------------------------------//
@@ -119,5 +127,4 @@ function isPalindrome2(s) {
     return misses < 2;
 }
 
-/*cc(isPalindrome2("RACECARR"));*/
 

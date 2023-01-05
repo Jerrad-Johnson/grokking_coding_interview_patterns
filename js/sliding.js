@@ -205,11 +205,11 @@ function minWindowV2(s, t) {
 
 /*cc(minWindowV2("ABXYZJKLSNFC" , "ABC"));*/
 
+
 //--------------------------------------------------//
 // I struggled a lot with this one, my increments / etc. were wrong and I couldn't figure it out.
-// I (mostly) copied Educative's version, took a break, and now it makes sense.
+// I (mostly) copied Educative's version, took a break, and now it makes sense. Emphasis perhaps on taking a break.
 //--------------------------------------------------//
-
 
 function findLongestSubstring(inputString) {
     if (inputString.length === 0) return 0;
@@ -241,8 +241,58 @@ function findLongestSubstring(inputString) {
     return longest;
 }
 
-cc(findLongestSubstring("aaaabaaa"), "Must be 2");
+/*cc(findLongestSubstring("aaaabaaa"), "Must be 2");
 cc(findLongestSubstring("abcdbea"), "Must be 5");
-cc(findLongestSubstring("aba"), "Must be 2");
+cc(findLongestSubstring("aba"), "Must be 2");*/
+
 
 //--------------------------------------------------//
+// Misunderstood the requirements. This does not solve the problem.
+//--------------------------------------------------//
+
+function minSubArraylenSorted(target, nums) {
+    let runningTotal = 0;
+    let numEntries = 0;
+    nums.sort().reverse();
+
+    for (let entry of nums){
+        runningTotal += entry;
+        numEntries++;
+        if (entry >= target) return 1;
+        if (runningTotal >= target) return numEntries;
+    }
+
+    return 0;
+}
+
+//cc(minSubArraylenSorted(5 , [1, 2, 1, 3]));
+
+
+//--------------------------------------------------//
+
+function minSubArraylen(target, nums){
+    let best = Number.POSITIVE_INFINITY;
+    let runningTotal = 0;
+    let runningCount = 0;
+
+    for (let i = 0; i < nums.length; i++){
+        if (nums[i] >= target) return 1;
+        for (let j = i; j < nums.length; j++){
+            runningTotal += nums[j];
+            runningCount++;
+            if (runningTotal >= target){
+                if (runningCount < best) best = runningCount;
+                runningTotal = 0;
+                runningCount = 0;
+            }
+        }
+        runningTotal = 0;
+        runningCount = 0;
+    }
+
+    if (best !== Number.POSITIVE_INFINITY) return best;
+    return 0;
+}
+
+cc(minSubArraylen(7 , [2, 3, 1, 2, 4, 3]));
+

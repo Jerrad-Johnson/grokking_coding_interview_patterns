@@ -1,3 +1,5 @@
+//--------------------------------------------------//
+
 let findMaxInputs = [
     [[1,2,3,4,5,6,7,8,9,10], 3],
     [[3,3,3,3,3,3,3,3,3,3], 4],
@@ -34,7 +36,7 @@ function findMaxSlidingWindow(nums, w) {
 
 //--------------------------------------------------//
 // This does not need the requirements: It will not necessarily find the shorted substring.
-// It passed Grokking's sample tests, but should not have.
+// It passed Grokking's sample tests, but should not have. The next one (minWindowTwoPointer) rightly passes.
 //--------------------------------------------------//
 
 let minWindowInputs = [
@@ -294,5 +296,8 @@ function minSubArraylen(target, nums){
     return 0;
 }
 
-cc(minSubArraylen(7 , [2, 3, 1, 2, 4, 3]));
+/*cc(minSubArraylen(7 , [2, 3, 1, 2, 4, 3]));*/
 
+//--------------------------------------------------//
+// The next (and last for this section) challenge is 'Best Time to Buy and Sell Stock.' However, I've done this a couple of times before. I am skipping it now.
+//--------------------------------------------------//

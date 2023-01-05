@@ -85,3 +85,17 @@ function findSumOfThreeImprovedV2(nums, target) {
 
 //--------------------------------------------------//
 
+function reverseWords(sentence) {
+    let sentenceAsArr = sentence.split(" ");
+    sentenceAsArr = sentenceAsArr.filter((word) => word !== "");
+    let right = sentenceAsArr.length-1;
+
+    for (let left = 0; left < right; left++){
+        [sentenceAsArr[left], sentenceAsArr[right]] = [sentenceAsArr[right], sentenceAsArr[left]];
+        right--;
+    }
+
+    return sentenceAsArr.join(" ");
+}
+
+cc(reverseWords("Hello     World"));

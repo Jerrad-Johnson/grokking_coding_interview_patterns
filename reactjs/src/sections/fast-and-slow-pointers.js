@@ -1,5 +1,6 @@
 import LinkedList from "../utils/linked-list/linked_list";
 import {cc} from "../common/variables";
+import reverseLinkedList from "../utils/linked-list/linked_list_reversal";
 
 export function fastAndSlowPointers(){
     //isHappyNumber(7);
@@ -19,10 +20,15 @@ export function fastAndSlowPointers(){
         //cc(detectCycle(inputLinkedList.head));
     }
 
-    let inputMiddleNode = [1,2,3,4,5];
+    let inputMiddleNode = [1,2,3,2,1];
     let middleNodeSet = new LinkedList();
     middleNodeSet.createLinkedList(inputMiddleNode);
-    cc(getMiddleNode(middleNodeSet.head));
+    //cc(getMiddleNode(middleNodeSet.head));
+
+    let palindromeNodeSet = new LinkedList();
+    palindromeNodeSet.createLinkedList(
+        [1, 2, 3, 2, 1]);
+    cc(palindrome(palindromeNodeSet.head));
 
 }
 
@@ -85,3 +91,27 @@ function getMiddleNode(head){
         fast = fast.next.next;
     }
 }
+
+
+//--------------------------------------------------//
+
+function palindrome(head) {
+    let entriesForwardFacing = [];
+    entriesForwardFacing.push(head.data);
+
+    while (head.next !== null) {
+        entriesForwardFacing.push(head.next.data);
+        head = head.next;
+    }
+
+    let entriesRearwardFacing = [...entriesForwardFacing];
+    entriesRearwardFacing.reverse();
+
+    for (let i = 0; i < entriesForwardFacing.length; i++){
+        if (entriesRearwardFacing[i] !== entriesForwardFacing[i]) return false;
+    }
+
+    return true;
+}
+
+

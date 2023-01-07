@@ -28,6 +28,18 @@ function mergeIntervals(v) {
 
     let iteratorLimit = 0;
 
+    let didPerformChange = true;
+    while (didPerformChange === true){
+        [mergedArrs, didPerformChange] = combineSlots(mergedArrs);
+    }
+
+    for (let i = 0; i < mergedArrs.length; i++){
+        mergedArrs[i].splice(1, mergedArrs[i].length-2);
+    }
+
+    return mergedArrs;
+
+
     function combineSlots(mergedArrs){
         let didPerformChange = false;
 
@@ -65,17 +77,6 @@ function mergeIntervals(v) {
         mergedArrs[i] = sortedArr;
         mergedArrs.splice(j, 1);
     }
-
-    let didPerformChange = true;
-    while (didPerformChange === true){
-        [mergedArrs, didPerformChange] = combineSlots(mergedArrs);
-    }
-
-    for (let i = 0; i < mergedArrs.length; i++){
-        mergedArrs[i].splice(1, mergedArrs[i].length-2);
-    }
-
-    return mergedArrs;
 }
 
 

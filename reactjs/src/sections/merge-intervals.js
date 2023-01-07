@@ -42,19 +42,12 @@ function mergeIntervals(v) {
                 if (iteratorLimit > 40) break outer;
 
                 if (lastInInitialArray >= lastInCurrentArray && firstInInitialArray <= lastInCurrentArray){
-                    let tempArr = [...mergedArrs[i], ...mergedArrs[j]];
-                    let unique = tempArr.filter((val, index, arr) => arr.indexOf(val) === index);
-                    let sortedArr = unique.sort((a, b) => a - b);
-                    mergedArrs[i] = sortedArr;
-                    mergedArrs.splice(j, 1);
+                    mergeArrays(mergedArrs, i, j);
                     i--;
                     didPerformChange = true;
                     break;
                 } else if (firstInInitialArray <= firstInCurrentArray && lastInInitialArray >= firstInCurrentArray){
-                    let tempArr = [...mergedArrs[i], ...mergedArrs[j]];
-                    let unique = tempArr.filter((val, index, arr) => arr.indexOf(val) === index);
-                    let sortedArr = unique.sort((a, b) => a - b);
-                    mergedArrs[i] = sortedArr;
+                    mergeArrays(mergedArrs, i, j);
                     mergedArrs.splice(j, 1);
                     i--;
                     didPerformChange = true;
@@ -62,8 +55,15 @@ function mergeIntervals(v) {
                 }
             }
         }
-
         return [mergedArrs, didPerformChange];
+    }
+
+    function mergeArrays(mergedArrs, i, j){
+        let tempArr = [...mergedArrs[i], ...mergedArrs[j]];
+        let unique = tempArr.filter((val, index, arr) => arr.indexOf(val) === index);
+        let sortedArr = unique.sort((a, b) => a - b);
+        mergedArrs[i] = sortedArr;
+        mergedArrs.splice(j, 1);
     }
 
     let didPerformChange = true;

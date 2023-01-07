@@ -28,7 +28,7 @@ export function fastAndSlowPointers(){
     let palindromeNodeSet = new LinkedList();
     palindromeNodeSet.createLinkedList(
         [1, 2, 3, 2, 1]);
-    cc(palindrome(palindromeNodeSet.head));
+    //cc(palindrome(palindromeNodeSet.head));
 
 }
 

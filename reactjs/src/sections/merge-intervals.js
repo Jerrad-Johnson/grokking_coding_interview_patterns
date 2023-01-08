@@ -1,14 +1,16 @@
 import {cc} from "../common/variables";
 
 export function mergeIntervals_set(){
-cc(mergeIntervals([[1,5],[3,7],[4,6]]));
-
+    //cc(mergeIntervals([[1,5],[3,7],[4,6]]));
+    cc(insertInterval([[1,2],[3,4],[5,8],[9,15]], [2,5]));
 }
 
 //--------------------------------------------------//
 // Although highly inefficient, in my browser this passes the first test case provided by Educative.
 // However, in their console, it returns null instead of what it returns for me: [[1,7]]
 // I am chalking this up to being a problem on their end.
+// Note: Their version may not be  more efficient; it doesn't appear to solve the problem of intervals which may be out of order.
+// e.g. [[1,4], [2,5], [8,10], [1,6]] <-- 1,6 would be its own bracket, it seems.
 //--------------------------------------------------//
 
 function mergeIntervals(v) {
@@ -77,6 +79,59 @@ function mergeIntervals(v) {
         mergedArrs[i] = sortedArr;
         mergedArrs.splice(j, 1);
     }
+}
+
+
+//--------------------------------------------------//
+// Once again, this works in my browser, but not on educative's website.
+//--------------------------------------------------//
+
+
+function insertInterval(existingIntervals, newInterval){
+    if (existingIntervals.length < 1) return existingIntervals;
+    let toBeMerged = [];
+    let newIntervalExpanded = [];
+
+    for (let i = newInterval[0]; i < newInterval[1]+1; i++){
+        newIntervalExpanded.push(i);
+    }
+
+    let newIntervalStart = newIntervalExpanded[0];
+    let newIntervalEnd = newIntervalExpanded[newIntervalExpanded.length-1];
+
+    for (let i = 0; i < existingIntervals.length; i++){
+        let end = existingIntervals[i].length -1;
+        let currentIntervalStart = existingIntervals[i][0];
+        let currentIntervalEnd = existingIntervals[i][end];
+        for (let j = newIntervalStart; j < newIntervalEnd+1; j++){
+            if (j >= currentIntervalStart && j <= currentIntervalEnd){
+                toBeMerged.push(i);
+                break;
+            }
+        }
+    }
+
+    let intervalsCombined = [];
+    for (let index of toBeMerged){
+        intervalsCombined.push(existingIntervals[index]);
+    }
+
+    let intervalsFlatted = [...intervalsCombined].flat();
+    let intervalsSorted = [...intervalsFlatted].sort((a, b) => a - b);
+    let newIntervalFinished = [intervalsSorted[0], intervalsSorted[intervalsSorted.length-1]];
+
+    let newIntervalsFinished = [...existingIntervals];
+    newIntervalsFinished[toBeMerged[0]] = newIntervalFinished;
+    toBeMerged.shift();
+
+
+    let runningIndex = 0;
+    for (let index of toBeMerged){
+        newIntervalsFinished.splice((index + runningIndex), 1);
+        runningIndex--;
+    }
+
+    return newIntervalsFinished;
 }
 
 

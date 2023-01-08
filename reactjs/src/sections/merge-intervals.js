@@ -167,6 +167,7 @@ function employeeFreeTime(schedules){
 
     return missingEntries;
 
+
     function expandHours(schedule){
         let expandedHours = [];
 
@@ -178,4 +179,5 @@ function employeeFreeTime(schedules){
     }
 }
 
+// They suggest doing MeetingRoomsII, but I'm going to skip it -- at least for now. Note: They also don't explain the problem.
 

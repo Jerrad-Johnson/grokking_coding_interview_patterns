@@ -3,7 +3,7 @@ import {cc} from "../common/variables";
 export function mergeIntervals_set(){
     //cc(mergeIntervals([[1,5],[3,7],[4,6]]));
     //cc(insertInterval([[1,2],[3,4],[5,8],[9,15]], [2,5]));
-    cc(employeeFreeTime([[[1,2],[5,6]],[[1,3]],[[4,10]]]))
+    //cc(employeeFreeTime([[[1,2],[5,6]],[[1,3]],[[4,10]]]))
 }
 
 //--------------------------------------------------//
@@ -180,4 +180,3 @@ function employeeFreeTime(schedules){
 }
 
 // They suggest doing MeetingRoomsII, but I'm going to skip it -- at least for now. Note: They also don't explain the problem.
-

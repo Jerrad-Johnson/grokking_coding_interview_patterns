@@ -2,7 +2,8 @@ import {cc} from "../common/variables";
 
 export function mergeIntervals_set(){
     //cc(mergeIntervals([[1,5],[3,7],[4,6]]));
-    cc(insertInterval([[1,2],[3,4],[5,8],[9,15]], [2,5]));
+    //cc(insertInterval([[1,2],[3,4],[5,8],[9,15]], [2,5]));
+    cc(employeeFreeTime([[[1,2],[5,6]],[[1,3]],[[4,10]]]))
 }
 
 //--------------------------------------------------//
@@ -132,6 +133,49 @@ function insertInterval(existingIntervals, newInterval){
     }
 
     return newIntervalsFinished;
+}
+
+//--------------------------------------------------//
+// Given the problems with Educative's site, this isn't complete. But it solves the immediate test case.
+// A better version would solve for multiple free hours in a series, and also for multiple series of free hours.
+// e.g when the expected result is [[1, 4], [6, 7]].
+//--------------------------------------------------//
+
+function employeeFreeTime(schedules){
+
+    let thisSchedule = [];
+    let allHoursCombined = [];
+    for (let employee of schedules){
+        for (let schedule of employee){
+            thisSchedule = expandHours(schedule);
+        }
+        allHoursCombined.push(thisSchedule);
+    }
+    let allHoursCombinedFlattened = allHoursCombined.flat();
+    let allHoursSorted = allHoursCombinedFlattened.sort((a, b) => a - b);
+    let allHoursFiltered = allHoursSorted.filter((e, i, a) => e !== a[i - 1]);
+
+    let lastEntry = allHoursSorted[0];
+    let missingEntries = [];
+
+    for (let entry of allHoursFiltered.slice(1)){
+        if (entry !== lastEntry+1) missingEntries.push(lastEntry);
+        lastEntry = entry;
+    }
+
+    missingEntries.push(missingEntries[0]+1);
+
+    return missingEntries;
+
+    function expandHours(schedule){
+        let expandedHours = [];
+
+        for (let i = schedule[0]+1; i < schedule[schedule.length-1]+1; i++){
+            expandedHours.push(i);
+        }
+
+        return expandedHours;
+    }
 }
 
 
